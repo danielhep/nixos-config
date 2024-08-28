@@ -1,7 +1,6 @@
 {pkgs, ...}:
 
 {
-  programs.fish = {
     enable = true;
     interactiveShellInit = ''
         ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
@@ -60,5 +59,4 @@
         sha256 = "tvU2SxhqccDPj+uzASFyqAnrBXc7bv+pblKdHcnfa8w=";
       };}
     ];
-  };
 }

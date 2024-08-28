@@ -2,12 +2,14 @@
 
 let name = "Daniel Heppner";
     user = "danielhep";
-    email = "dh@danielheppner.com"; in
+    email = "dh@danielheppner.com";
+    fishConfig = import ./programs/fish/fish.nix; in
 {
-  imports = [
-    ./programs/vscode.nix
-    ./programs/fish/fish.nix
-  ];
+  programs.fish = fishConfig;
+  # imports = [
+  #   ./programs/vscode.nix
+  #   ./programs/fish/fish.nix
+  # ];
   programs.atuin = {
     enable = true;
     settings =  {

@@ -332,7 +332,24 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_5",
+        "secrets": "secrets"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724879441,
+        "narHash": "sha256-TiXvRifb1OTBW/o1CFkPVrHtx1Vi/GO10VPTzDMb15E=",
+        "ref": "refs/heads/main",
+        "rev": "023a2608fb483d44d0831501239d84199bf0862e",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/danielhep/secrets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/danielhep/secrets.git"
       }
     },
     "systems": {
