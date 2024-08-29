@@ -2,15 +2,14 @@
 
 let name = "Daniel Heppner";
     user = "danielhep";
-    email = "dh@danielheppner.com";
-    fishConfig = import ./programs/fish/fish.nix; in
+    email = "dh@danielheppner.com"; in
 {
-  programs.fish = fishConfig;
+  fish = import ./programs/fish.nix {inherit pkgs;};
   # imports = [
   #   ./programs/vscode.nix
   #   ./programs/fish/fish.nix
   # ];
-  programs.atuin = {
+  atuin = {
     enable = true;
     settings =  {
         auto_sync = true;
