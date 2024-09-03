@@ -12,7 +12,7 @@ let
 in
 {
   imports = [
-   ./dock
+   # ./dock
   ];
 
   # It me
@@ -40,8 +40,8 @@ in
     # This message is safe to ignore. (https://github.com/dustinlyons/nixos-config/issues/83)
 
     masApps = {
-      "1password" = 1333542190;
-      "wireguard" = 1451685025;
+      # "1password" = 1333542190;
+      # "wireguard" = 1451685025;
     };
   };
 
@@ -59,7 +59,13 @@ in
         ];
 
         stateVersion = "23.11";
+        activation = {
+          removeVSCodeOSS = lib.hm.dag.entryBefore ["writeBoundary"] ''
+              $DRY_RUN_CMD rm -rf $HOME/.vscode-oss
+          '';
+        };
       };
+
       programs = {} // import ../shared/home-manager.nix { inherit config pkgs lib; };
 
       # Marked broken Oct 20, 2022 check later to remove this
@@ -69,35 +75,35 @@ in
   };
 
   # Fully declarative dock using the latest from Nix Store
-  local = {
-    dock = {
-      enable = true;
-      entries = [
-        { path = "/Applications/Slack.app/"; }
-        { path = "/System/Applications/Messages.app/"; }
-        { path = "/System/Applications/Facetime.app/"; }
-        { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-        { path = "/System/Applications/Music.app/"; }
-        { path = "/System/Applications/News.app/"; }
-        { path = "/System/Applications/Photos.app/"; }
-        { path = "/System/Applications/Photo Booth.app/"; }
-        { path = "/System/Applications/TV.app/"; }
-        { path = "/System/Applications/Home.app/"; }
-        {
-          path = toString myEmacsLauncher;
-          section = "others";
-        }
-        {
-          path = "${config.users.users.${user}.home}/.local/share/";
-          section = "others";
-          options = "--sort name --view grid --display folder";
-        }
-        {
-          path = "${config.users.users.${user}.home}/.local/share/downloads";
-          section = "others";
-          options = "--sort name --view grid --display stack";
-        }
-      ];
-    };
-  };
+  # local = {
+  #   dock = {
+  #     enable = true;
+  #     entries = [
+  #       { path = "/Applications/Firefox.app/"; }
+  #       { path = "/System/Applications/Messages.app/"; }
+  #       { path = "/Applications/Signal.app/"; }
+  #       # { path = "/Applications/WhatsApp.app/"; }
+  #       { path = "/System/Applications/Calendar.app/"; }
+  #       { path = "/Applications/Zed.app/"; }
+  #       { path = "/Applications/Spotify.app/"; }
+  #       { path = "/Applications/Discord.app/"; }
+  #       { path = "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app/"; }
+  #       # { path = "${pkgs.wezterm}/Applications/Wezterm.app/"; }
+  #       # {
+  #       #   path = toString myEmacsLauncher;
+  #       #   section = "others";
+  #       # }
+  #       {
+  #         path = "${config.users.users.${user}.home}/.local/share/";
+  #         section = "others";
+  #         options = "--sort name --view grid --display folder";
+  #       }
+  #       {
+  #         path = "${config.users.users.${user}.home}/Downloads";
+  #         section = "others";
+  #         options = "--sort name --view grid --display stack";
+  #       }
+  #     ];
+  #   };
+  # };
 }

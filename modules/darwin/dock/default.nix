@@ -59,6 +59,8 @@ in
             if ! diff -wu <(echo -n "$haveURIs") <(echo -n '${wantURIs}') >&2 ; then
               echo >&2 "Resetting Dock."
               ${dockutil}/bin/dockutil --no-restart --remove all
+              ${dockutil}/bin/dockutil --remove all
+              sleep 1
               ${createEntries}
               killall Dock
             else

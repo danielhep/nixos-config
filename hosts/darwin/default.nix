@@ -17,7 +17,7 @@ let user = "danielhep"; in
 
   # Setup user, packages, programs
   nix = {
-    package = pkgs.nix;
+    package = pkgs.nixVersions.latest;
     settings.trusted-users = [ "@admin" "${user}" ];
 
     gc = {
@@ -74,7 +74,7 @@ let user = "danielhep"; in
       };
 
       dock = {
-        autohide = false;
+        autohide = true;
         show-recents = false;
         launchanim = true;
         orientation = "bottom";

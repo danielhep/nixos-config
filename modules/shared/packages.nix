@@ -10,6 +10,7 @@ with pkgs; [
   lazygit
   ripgrep-all
   starship
+  wezterm
 
   # Encryption and security tools
   age
